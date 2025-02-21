@@ -21,10 +21,10 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t cbjoedstrup/discord-bot .  # Build the Docker image
-        docker tag cbjoedstrup/discord-bot cbjoedstrup/discord-bot:latest  # Tag the image
+        docker build -t cbjoedstrup/gambling-bot .  # Build the Docker image
+        docker tag cbjoedstrup/gambling-bot cbjoedstrup/gambling-bot:latest  # Tag the image
 
     - name: Push Docker image to Docker Hub
       run: |
-        docker push cbjoedstrup/discord-bot  # Push the image to Docker Hub
-        docker push cbjoedstrup/discord-bot:latest  # Push the tagged image
+        docker push cbjoedstrup/gambling-bot  # Push the image to Docker Hub
+        docker push cbjoedstrup/gambling-bot:latest  # Push the tagged image
