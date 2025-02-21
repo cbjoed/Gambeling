@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: Build, Push, and Deploy Docker Image
 
 on:
   push:
@@ -28,3 +28,16 @@ jobs:
       run: |
         docker push cbjoedstrup/gambling-bot  # Push the image to Docker Hub
         docker push cbjoedstrup/gambling-bot:latest  # Push the tagged image
+
+    - name: Deploy to Azure Container Instances
+      uses: azure/aci-deploy@v1
+      with:
+        resource-group: ${{ secrets.AZURE_RESOURCE_GROUP }}  # GitHub Secret for Azure resource group
+        dns-name-label: gambling-bot  # DNS name for the container instance
+        image: cbjoedstrup/gambling-bot:latest  # Image to deploy from Docker Hub
+        registry-login-server: index.docker.io  # Docker Hub login server
+        registry-username: ${{ secrets.DOCKER_USERNAME }}  # Docker Hub username
+        registry-password: ${{ secrets.DOCKER_PASSWORD }}  # Docker Hub password
+        name: gambling-bot  # Name of the container instance
+        location: eastus  # Location of the container instance
+        ports: 80  # Ports to expose
