@@ -81,12 +81,6 @@ class Program
 
             SaveBalances();
         }
-        else if (command == "!daily")
-        {
-            _balances[userId] += 50;
-            SaveBalances();
-            await message.Channel.SendMessageAsync($"{message.Author.Mention}, du har modtaget dine daglige 50 mønter!");
-        }
         else if (command == "!leaderboard")
         {
             var topPlayers = _balances.OrderByDescending(x => x.Value).Take(3);
@@ -134,6 +128,74 @@ class Program
             _balances[targetId] = 100;
             SaveBalances();
             await message.Channel.SendMessageAsync($"{targetUser.Mention}s saldo er blevet nulstillet til 100 mønter.");
+        }
+        else if (command == "!roulette" && args.Length == 3 && int.TryParse(args[2], out int rouletteBetAmount))
+        {
+            if (_balances[userId] < rouletteBetAmount)
+            {
+                await message.Channel.SendMessageAsync($"{message.Author.Mention}, du har ikke nok mønter!");
+                return;
+            }
+
+            if (!int.TryParse(args[1], out int betNumber) || betNumber < 0 || betNumber > 36)
+            {
+                await message.Channel.SendMessageAsync($"{message.Author.Mention}, du skal vælge et tal mellem 0 og 36.");
+                return;
+            }
+
+            int resultNumber = _rand.Next(37); // Random number between 0 and 36
+
+            if (betNumber == resultNumber)
+            {
+                int winnings = rouletteBetAmount * 35; // Payout is 35:1
+                _balances[userId] += winnings;
+                await message.Channel.SendMessageAsync($"{message.Author.Mention}, kuglen landede på {resultNumber}. Du vandt {winnings} mønter! 🎉");
+            }
+            else
+            {
+                _balances[userId] -= rouletteBetAmount;
+                await message.Channel.SendMessageAsync($"{message.Author.Mention}, kuglen landede på {resultNumber}. Du tabte {rouletteBetAmount} mønter. 😢");
+            }
+
+            SaveBalances();
+        }
+        else if (command == "!slot" && args.Length == 2 && int.TryParse(args[1], out int slotBetAmount))
+        {
+            if (_balances[userId] < slotBetAmount)
+            {
+                await message.Channel.SendMessageAsync($"{message.Author.Mention}, du har ikke nok mønter!");
+                return;
+            }
+
+            string[] symbols = { "🍒", "🍋", "🍊", "🍉", "⭐", "🔔" };
+            string[] result = new string[3];
+
+            for (int i = 0; i < 3; i++)
+            {
+                result[i] = symbols[_rand.Next(symbols.Length)];
+            }
+
+            await message.Channel.SendMessageAsync($"{message.Author.Mention}, du fik: {string.Join(" ", result)}");
+
+            if (result[0] == result[1] && result[1] == result[2])
+            {
+                int winnings = slotBetAmount * 10; // Payout is 10:1 for three matching symbols
+                _balances[userId] += winnings;
+                await message.Channel.SendMessageAsync($"{message.Author.Mention}, du vandt {winnings} mønter! 🎉");
+            }
+            else if (result[0] == result[1] || result[1] == result[2] || result[0] == result[2])
+            {
+                int winnings = slotBetAmount * 2; // Payout is 2:1 for two matching symbols
+                _balances[userId] += winnings;
+                await message.Channel.SendMessageAsync($"{message.Author.Mention}, du vandt {winnings} mønter! 🎉");
+            }
+            else
+            {
+                _balances[userId] -= slotBetAmount;
+                await message.Channel.SendMessageAsync($"{message.Author.Mention}, du tabte {slotBetAmount} mønter. 😢");
+            }
+
+            SaveBalances();
         }
     }
 
