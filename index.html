@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamblingBot - Discord Gambling Bot Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .command-card {
+            transition: all 0.3s ease;
+        }
+        .command-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-gray-100 min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-purple-500/20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-dice-d20 text-purple-400 text-2xl"></i>
+                <span class="text-xl font-bold gradient-text">GamblingBot</span>
+            </div>
+            <a href="https://www.cbjoed.com" class="flex items-center space-x-2 hover:text-purple-300 transition">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Portfolio</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto text-center animate-fade-in">
+            <div class="mb-6">
+                <div class="inline-block p-3 bg-purple-500/20 rounded-full mb-4">
+                    <i class="fas fa-gamepad text-3xl text-purple-400"></i>
+                </div>
+            </div>
+            <h1 class="text-5xl sm:text-6xl font-bold mb-6 gradient-text">
+                GamblingBot
+            </h1>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                A sophisticated Discord bot that brings exciting gambling mechanics to your server. 
+                Manage balances, place bets, and compete on leaderboards.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://github.com" class="px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-semibold transition flex items-center justify-center gap-2">
+                    <i class="fas fa-github"></i>
+                    View on GitHub
+                </a>
+                <a href="#features" class="px-8 py-3 border border-purple-400 hover:border-purple-300 rounded-lg font-semibold transition">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Key Features</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature Card 1 -->
+                <div class="glass-effect p-8 rounded-xl hover:border-purple-300 transition group">
+                    <div class="text-4xl mb-4 text-purple-400 group-hover:scale-110 transition">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Balance System</h3>
+                    <p class="text-gray-400">
+                        Each user starts with 100 coins. Balances are persistent and stored securely in JSON format.
+                    </p>
+                </div>
+
+                <!-- Feature Card 2 -->
+                <div class="glass-effect p-8 rounded-xl hover:border-purple-300 transition group">
+                    <div class="text-4xl mb-4 text-purple-400 group-hover:scale-110 transition">
+                        <i class="fas fa-dice"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">50/50 Betting</h3>
+                    <p class="text-gray-400">
+                        Place bets and let fate decide! Win or lose, the excitement is always present.
+                    </p>
+                </div>
+
+                <!-- Feature Card 3 -->
+                <div class="glass-effect p-8 rounded-xl hover:border-purple-300 transition group">
+                    <div class="text-4xl mb-4 text-purple-400 group-hover:scale-110 transition">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Leaderboard</h3>
+                    <p class="text-gray-400">
+                        Compete with others! View top 3 richest players and track your position.
+                    </p>
+                </div>
+
+                <!-- Feature Card 4 -->
+                <div class="glass-effect p-8 rounded-xl hover:border-purple-300 transition group">
+                    <div class="text-4xl mb-4 text-purple-400 group-hover:scale-110 transition">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Admin Controls</h3>
+                    <p class="text-gray-400">
+                        Server owner can distribute coins and manage the economy with admin commands.
+                    </p>
+                </div>
+
+                <!-- Feature Card 5 -->
+                <div class="glass-effect p-8 rounded-xl hover:border-purple-300 transition group">
+                    <div class="text-4xl mb-4 text-purple-400 group-hover:scale-110 transition">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Data Persistence</h3>
+                    <p class="text-gray-400">
+                        All balances and transactions are automatically saved and recovered.
+                    </p>
+                </div>
+
+                <!-- Feature Card 6 -->
+                <div class="glass-effect p-8 rounded-xl hover:border-purple-300 transition group">
+                    <div class="text-4xl mb-4 text-purple-400 group-hover:scale-110 transition">
+                        <i class="fas fa-docker"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Docker Ready</h3>
+                    <p class="text-gray-400">
+                        Easily containerized for deployment. Deploy anywhere with Docker support.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commands Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-black/30">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Bot Commands</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Balance Command -->
+                <div class="command-card glass-effect p-6 rounded-lg">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-purple-500/30 p-3 rounded-lg">
+                            <i class="fas fa-coins text-purple-300 text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">!balance</h3>
+                            <p class="text-sm text-gray-400">Check your coin balance</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900/50 p-4 rounded text-sm font-mono text-green-400">
+                        &gt; !balance<br>
+                        <span class="text-gray-400">@User, your balance is 150 coins.</span>
+                    </div>
+                </div>
+
+                <!-- Bet Command -->
+                <div class="command-card glass-effect p-6 rounded-lg">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-purple-500/30 p-3 rounded-lg">
+                            <i class="fas fa-dice text-purple-300 text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">!bet &lt;amount&gt;</h3>
+                            <p class="text-sm text-gray-400">Place a 50/50 bet</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900/50 p-4 rounded text-sm font-mono text-green-400">
+                        &gt; !bet 50<br>
+                        <span class="text-gray-400">@User, you won 50 coins! 🎉</span>
+                    </div>
+                </div>
+
+                <!-- Leaderboard Command -->
+                <div class="command-card glass-effect p-6 rounded-lg">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-purple-500/30 p-3 rounded-lg">
+                            <i class="fas fa-trophy text-purple-300 text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">!leaderboard</h3>
+                            <p class="text-sm text-gray-400">View top 3 richest players</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900/50 p-4 rounded text-sm font-mono text-green-400">
+                        &gt; !leaderboard<br>
+                        <span class="text-gray-400">**Top 3 richest:**<br>
+                        @Player1: 500 coins<br>
+                        @Player2: 350 coins<br>
+                        @Player3: 200 coins</span>
+                    </div>
+                </div>
+
+                <!-- Give Command (Admin) -->
+                <div class="command-card glass-effect p-6 rounded-lg border border-yellow-500/30">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-yellow-500/30 p-3 rounded-lg">
+                            <i class="fas fa-crown text-yellow-300 text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">!give @user &lt;amount&gt;</h3>
+                            <p class="text-sm text-gray-400">Admin: Give coins to user</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900/50 p-4 rounded text-sm font-mono text-green-400">
+                        &gt; !give @User 100<br>
+                        <span class="text-gray-400">Transferred 100 coins to @User</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Tech Stack</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="glass-effect p-6 rounded-lg text-center hover:border-purple-300 transition">
+                    <i class="fas fa-code text-3xl text-purple-400 mb-4 block"></i>
+                    <h3 class="font-bold">C#</h3>
+                    <p class="text-sm text-gray-400">.NET 8.0</p>
+                </div>
+                <div class="glass-effect p-6 rounded-lg text-center hover:border-purple-300 transition">
+                    <i class="fab fa-discord text-3xl text-purple-400 mb-4 block"></i>
+                    <h3 class="font-bold">Discord.Net</h3>
+                    <p class="text-sm text-gray-400">3.17.1</p>
+                </div>
+                <div class="glass-effect p-6 rounded-lg text-center hover:border-purple-300 transition">
+                    <i class="fab fa-docker text-3xl text-purple-400 mb-4 block"></i>
+                    <h3 class="font-bold">Docker</h3>
+                    <p class="text-sm text-gray-400">Containerized</p>
+                </div>
+                <div class="glass-effect p-6 rounded-lg text-center hover:border-purple-300 transition">
+                    <i class="fas fa-database text-3xl text-purple-400 mb-4 block"></i>
+                    <h3 class="font-bold">JSON</h3>
+                    <p class="text-sm text-gray-400">Data Storage</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-black/30">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">How It Works</h2>
+            
+            <div class="space-y-6">
+                <div class="flex gap-6 animate-fade-in" style="animation-delay: 0.1s">
+                    <div class="flex-shrink-0">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-600">
+                            <span class="text-lg font-bold">1</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold mb-2">Join Your Server</h3>
+                        <p class="text-gray-400">Invite the GamblingBot to your Discord server and enable it in a designated channel.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 animate-fade-in" style="animation-delay: 0.2s">
+                    <div class="flex-shrink-0">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-600">
+                            <span class="text-lg font-bold">2</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold mb-2">Get Starting Balance</h3>
+                        <p class="text-gray-400">Each user automatically receives 100 coins when they first interact with the bot.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 animate-fade-in" style="animation-delay: 0.3s">
+                    <div class="flex-shrink-0">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-600">
+                            <span class="text-lg font-bold">3</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold mb-2">Place Your Bets</h3>
+                        <p class="text-gray-400">Use !bet to wager coins. Win or lose based on a 50/50 chance - it's all about luck!</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 animate-fade-in" style="animation-delay: 0.4s">
+                    <div class="flex-shrink-0">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-600">
+                            <span class="text-lg font-bold">4</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold mb-2">Compete & Climb</h3>
+                        <p class="text-gray-400">Check the leaderboard to see where you rank among the richest players on your server.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 animate-fade-in" style="animation-delay: 0.5s">
+                    <div class="flex-shrink-0">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-600">
+                            <span class="text-lg font-bold">5</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold mb-2">Data Persistence</h3>
+                        <p class="text-gray-400">Your balance is automatically saved and persists across sessions. Never lose your coins!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Stats -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div class="glass-effect p-8 rounded-lg">
+                    <div class="text-4xl font-bold gradient-text mb-2">4</div>
+                    <p class="text-gray-300">Core Commands</p>
+                </div>
+                <div class="glass-effect p-8 rounded-lg">
+                    <div class="text-4xl font-bold gradient-text mb-2">50/50</div>
+                    <p class="text-gray-300">Betting Odds</p>
+                </div>
+                <div class="glass-effect p-8 rounded-lg">
+                    <div class="text-4xl font-bold gradient-text mb-2">100</div>
+                    <p class="text-gray-300">Starting Coins</p>
+                </div>
+                <div class="glass-effect p-8 rounded-lg">
+                    <div class="text-4xl font-bold gradient-text mb-2">C#</div>
+                    <p class="text-gray-300">.NET 8.0</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-purple-900/40 to-transparent">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Add Some Excitement to Your Server?</h2>
+            <p class="text-xl text-gray-300 mb-8">Deploy GamblingBot and start the fun today!</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://github.com" class="px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-semibold transition flex items-center justify-center gap-2">
+                    <i class="fas fa-github"></i>
+                    View Source Code
+                </a>
+                <a href="#features" class="px-8 py-3 border border-purple-400 hover:border-purple-300 rounded-lg font-semibold transition">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-purple-500/20 py-12 px-4 sm:px-6 lg:px-8 bg-black/40">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4 gradient-text">GamblingBot</h3>
+                    <p class="text-gray-400">A sophisticated Discord gambling bot for your community.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#features" class="hover:text-purple-300 transition">Features</a></li>
+                        <li><a href="https://github.com" class="hover:text-purple-300 transition">GitHub</a></li>
+                        <li><a href="https://www.cbjoed.com" class="hover:text-purple-300 transition">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Tech Stack</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>C# / .NET 8.0</li>
+                        <li>Discord.Net API</li>
+                        <li>Docker</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-purple-500/20 pt-8 text-center text-gray-400">
+                <p>Built with ❤️ by <span class="text-purple-300">Portfolio Developer</span></p>
+                <p class="mt-2"><a href="https://www.cbjoed.com" class="hover:text-purple-300 transition">← Back to Portfolio</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
